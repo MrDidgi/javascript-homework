@@ -17,24 +17,32 @@ const counter = {
 
     counterId: document.getElementById('counter'),
 
-    counterValue: document.getElementById('value').innerText,
+    counterValue: 0,
+
+   // counterValueUI: document.getElementById('value').innerText,
 
     consoleLog () {
         console.log(this.counterId);
         console.log(this.counterValue);
+        console.log(this.counterValueUI);
     },
 
     increment () {
         console.log('click');
-        this.counterValue = parseInt(this.counterValue +1);
-        return document.getElementById('value').innerText = this.counterValue;
+        this.counterValue = this.counterValue +1;
+        this.updateValue();
       },
 
     decrement () {
         console.log('click');
-        this.counterValue = parseInt(this.counterValue -1);
-        return document.getElementById('value').innerText = this.counterValue;
+        this.counterValue = this.counterValue -1;
+        this.updateValue();
     },
+
+    updateValue () {
+       // console.log(this.counterValue);
+       document.getElementById('value').innerText = this.counterValue;
+    }
 
 };
 
