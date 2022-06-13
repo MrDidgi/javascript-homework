@@ -8,22 +8,35 @@
 const inputId = document.getElementById("name-input");
 console.log(inputId);
 
-let spanId = document.getElementById(`name-output`);
+let spanId = document.querySelector(`#name-output`);
 console.log(spanId);
 
 let inputContents = '';
 
-const inputTracker = function (key) {
-    console.log(key);
+const inputTracker = function (event) {
+    console.log(event);
+    console.log(event.currentTarget.value);
    
-   //inputContents += key.key ;
+  return inputContents = event.currentTarget.value;
 
-    if (key.code === "Enter") {
-        console.log(`Enter for ${inputContents}`);
+    //----- A commented version where text would be placed in a span immediateatle after input change =====
 
-       // spanId.innerHTML(inputContents);
-    }
+    //     if (event.value === "Enter") {
+    //         console.log(`Enter for ${inputContents}`);
+    //        // spanId.innerHTML(inputContents);
+    //     }
+    //    return spanId.textContent = inputContents;
 };
 
-inputId.addEventListener('keydown', inputTracker);
+    // ---- Event listener for Enter to place the text in a span only after Enter button was clicked ----
+const inputEnterTracker = function (event) {
+    if (event.key === "Enter") {
+                console.log(`Enter for ${inputContents}`);
+                return spanId.textContent = inputContents;
+             }
+};
+
+inputId.addEventListener('input', inputTracker);
+
+inputId.addEventListener('keydown', inputEnterTracker);
 
